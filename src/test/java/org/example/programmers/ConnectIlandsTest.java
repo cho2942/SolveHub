@@ -11,6 +11,6 @@ class ConnectIlandsTest {
 
     @Test
     void solution() {
-        Assertions.assertThat(connectIlands.solution(4, new int[][]{{0,1,1},{0,2,2},{1,2,5},{1,3,1},{2,3,8}}));
+        Assertions.assertThat(connectIlands.solution(4, new int[][]{{0,1,1},{0,2,2},{1,2,5},{1,3,1},{2,3,8}})).isEqualTo(4);
     }
 }

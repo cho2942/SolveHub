@@ -5,29 +5,26 @@ public class Network {
     public int solution(int n, int[][] computers) {
         int count = 0;
 
-        while(true){
-            for(int i=0;i<computers.length;i++){
-                for(int j =0;j<computers.length;j++){
-                    if(computers[i][j] == 1){
-                        count++;
-                        recursive(computers,i,j);
-                    }
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                if(computers[i][j] == 1){
+                    recursive(computers, i, j, n);
+                    count++;
                 }
             }
-            break;
         }
+
         return count;
     }
 
-    public static int recursive(int[][] computers,int i,int j){
-        computers[i][j] = 0;
+    private void recursive(int[][] computers, int x, int y, int n){
+        computers[x][y] = 0;
 
-        for(int z=0;z<computers.length;z++){
-            if(computers[j][z] == 1){
-                recursive(computers,j,z);
+        for(int i=0; i<n; i++){
+            if(computers[y][i] == 1){
+                recursive(computers, y, i, n);
             }
         }
-        return 0;
     }
 }
 
@@ -45,6 +42,6 @@ public class Network {
 //i번 컴퓨터와 j번 컴퓨터가 연결되어 있으면 computers[i][j]를 1로 표현합니다.
 //computer[i][i]는 항상 1입니다.
 //        입출력 예
-//n	computers	return
-//        3	[[1, 1, 0], [1, 1, 0], [0, 0, 1]]	2
-//        3	[[1, 1, 0], [1, 1, 1], [0, 1, 1]]	1
+//n	            computers	          return
+//3	[[1, 1, 0], [1, 1, 0], [0, 0, 1]]	2
+//3	[[1, 1, 0], [1, 1, 1], [0, 1, 1]]	1
